@@ -62,6 +62,8 @@ function App() {
   const [viewerMode, setViewerMode] = useState("frame");
   const [viewerLevel, setViewerLevel] = useState(27);
   const [selectedMember, setSelectedMember] = useState("column");
+  const [viewerRotate, setViewerRotate] = useState(-22);
+  const [viewerFloorOnly, setViewerFloorOnly] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const nav = [["Work", "#work"], ["Expertise", "#expertise"], ["Experience", "#experience"], ["Research", "#research"], ["About", "#about"]];
 
@@ -156,8 +158,8 @@ function App() {
         <div className="viewer-shell">
           <div className={"viewer-stage mode-"+viewerMode}>
             <div className="viewer-grid" />
-            <div className="viewer-building">
-              {Array.from({length:10}).map((_,i)=><div key={i} className={"viewer-floor "+(viewerLevel>=((i+1)*3)?"visible":"ghost")}><i/><i/><i/><i/><b/></div>)}
+            <div className="viewer-building" style={{transform:`rotateY(${viewerRotate}deg) rotateX(3deg) skewY(-1deg)`}}>
+              {Array.from({length:10}).map((_,i)=><div key={i} className={"viewer-floor "+(viewerLevel>=((i+1)*3)?"visible":"ghost")+" "+(viewerFloorOnly && viewerLevel>=((i+1)*3) && viewerLevel<((i+1)*3)+3?"isolated":"")}><i/><i/><i/><i/><b/></div>)}
               <div className="viewer-core"/>
               <div className="viewer-foundation"/>
               <div className="viewer-roof"/>
@@ -169,6 +171,8 @@ function App() {
             <div className="viewer-panel-head"><span>MODEL CONTROLS</span><b>LIVE</b></div>
             <div className="viewer-control"><label>VIEW</label><div className="viewer-buttons">{[["frame","FRAME"],["core","CORE"],["floor","FLOOR"]].map(([k,t])=><button className={viewerMode===k?"active":""} onClick={()=>setViewerMode(k)} key={k}>{t}</button>)}</div></div>
             <div className="viewer-control"><label>LEVEL</label><input type="range" min="1" max="27" value={viewerLevel} onChange={e=>setViewerLevel(Number(e.target.value))}/><div className="level-readout"><strong>LEVEL {String(viewerLevel).padStart(2,"0")}</strong><span>27 FLOORS</span></div></div>
+            <div className="viewer-control"><label>ROTATION</label><input type="range" min="-55" max="55" value={viewerRotate} onChange={e=>setViewerRotate(Number(e.target.value))}/><div className="level-readout"><strong>{viewerRotate}°</strong><span>ORBIT VIEW</span></div></div>
+            <div className="viewer-control viewer-action"><button onClick={()=>setViewerFloorOnly(v=>!v)}>{viewerFloorOnly?"SHOW FULL MODEL":"ISOLATE LEVEL"}</button></div>
             <div className="viewer-legend"><div><i className="legend-frame"/>PRIMARY FRAME</div><div><i className="legend-core"/>STRUCTURAL CORE</div><div><i className="legend-slab"/>FLOOR PLATE</div></div>
             <div className="viewer-note">WEB VIEWER / PLACEHOLDER GEOMETRY<br/>READY FOR VERIFIED PROJECT DATA</div>
           </div>
