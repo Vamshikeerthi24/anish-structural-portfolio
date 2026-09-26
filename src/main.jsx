@@ -179,6 +179,31 @@ function App() {
           </div>
         </div>
       </section>
+      <section className="research-dossier">
+        <div className="section-head"><div><p className="section-kicker">12 / RESEARCH DOSSIER</p><h2>Built from <span>the research.</span></h2></div><p className="section-intro">The portfolio now connects the G+27 visual model directly to the documented research themes behind Anish's publications.</p></div>
+        <div className="dossier-grid">
+          <article className="dossier-feature">
+            <div className="dossier-label">2026 / COMPARATIVE STUDY</div>
+            <h3>Three structural systems.<br/><em>Two seismic conditions.</em></h3>
+            <p>The comparative study examines reinforced concrete, steel and composite systems for a G+27 high-rise in Seismic Zones II and IV. The indexed research summary describes ETABS as the platform used for modeling, analysis, design and dynamic analysis.</p>
+            <div className="dossier-tags"><span>G+27</span><span>RC</span><span>STEEL</span><span>COMPOSITE</span><span>ZONE II</span><span>ZONE IV</span><span>ETABS</span></div>
+            <a className="dossier-link" href="https://www.springerprofessional.de/en/comparative-seismic-analysis-and-design-of-g-27-high-rise-buildi/51931732" target="_blank" rel="noreferrer">OPEN PUBLICATION <ExternalLink size={15}/></a>
+          </article>
+          <article className="dossier-card">
+            <span>2025 / COMPOSITE SYSTEM</span>
+            <h3>Composite high-rise<br/><em>in Zone II.</em></h3>
+            <p>The earlier conference paper focuses specifically on analysis and design of the G+27 structure using composite systems in Seismic Zone II.</p>
+            <div className="dossier-facts"><div><b>3263</b><small>AIP VOLUME</small></div><div><b>090007</b><small>ARTICLE</small></div><div><b>10.1063/5.0261565</b><small>DOI</small></div></div>
+            <a className="dossier-link" href="https://pubs.aip.org/aip/acp/article-abstract/3263/1/090007/3359249/Analysis-and-design-of-high-rise-building-G-27?redirectedFrom=fulltext" target="_blank" rel="noreferrer">OPEN PUBLICATION <ExternalLink size={15}/></a>
+          </article>
+          <article className="dossier-card">
+            <span>RESEARCH THEMES</span>
+            <h3>Performance, efficiency<br/><em>and feasibility.</em></h3>
+            <ul><li>Seismic behavior and dynamic response</li><li>Comparison of RC, steel and composite systems</li><li>Design optimization and reduced self-weight considerations</li><li>Sustainability and construction feasibility</li><li>Code-based design checks</li></ul>
+          </article>
+        </div>
+        <div className="source-note"><BookOpen size={16}/><span>Source basis: publication metadata and indexed research summaries. Exact member sizes, grid dimensions, foundation geometry and numerical results are not added unless supported by the paper/full project files.</span></div>
+      </section>
       <section className="inspector-section">
         <div className="section-head"><div><p className="section-kicker">11 / MEMBER INSPECTOR</p><h2>Select a <span>structural element.</span></h2></div><p className="section-intro">A portfolio-grade inspection layer for explaining structural members. Select an element to see its role, typical inputs and where it sits in the load path.</p></div>
         <div className="inspector-shell">
