@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" role="img" aria-labelledby="title desc">
+<title id="title">G+27 schematic structural model</title>
+<desc id="desc">Perspective structural engineering visualization showing columns, beams, floor slabs, central core and foundation.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#24343a"/><stop offset="1" stop-color="#10181c"/></linearGradient>
+ <linearGradient id="slab" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9eb8c0" stop-opacity=".65"/><stop offset="1" stop-color="#6d858d" stop-opacity=".18"/></linearGradient>
+ <linearGradient id="core" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c96f64" stop-opacity=".82"/><stop offset="1" stop-color="#7d3533" stop-opacity=".65"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1000" height="760" fill="url(#bg)"/>
+<g opacity=".12" stroke="#eeebe2">
+ <path d="M0 60H1000"/><path d="M0 92H1000"/><path d="M0 124H1000"/><path d="M0 156H1000"/><path d="M0 188H1000"/><path d="M0 220H1000"/><path d="M0 252H1000"/><path d="M0 284H1000"/><path d="M0 316H1000"/><path d="M0 348H1000"/><path d="M0 380H1000"/><path d="M0 412H1000"/><path d="M0 444H1000"/><path d="M0 476H1000"/><path d="M0 508H1000"/><path d="M0 540H1000"/><path d="M0 572H1000"/><path d="M0 604H1000"/><path d="M0 636H1000"/><path d="M0 668H1000"/><path d="M0 700H1000"/><path d="M0 732H1000"/>
+ <path d="M0 0V760"/><path d="M36 0V760"/><path d="M72 0V760"/><path d="M108 0V760"/><path d="M144 0V760"/><path d="M180 0V760"/><path d="M216 0V760"/><path d="M252 0V760"/><path d="M288 0V760"/><path d="M324 0V760"/><path d="M360 0V760"/><path d="M396 0V760"/><path d="M432 0V760"/><path d="M468 0V760"/><path d="M504 0V760"/><path d="M540 0V760"/><path d="M576 0V760"/><path d="M612 0V760"/><path d="M648 0V760"/><path d="M684 0V760"/><path d="M720 0V760"/><path d="M756 0V760"/><path d="M792 0V760"/><path d="M828 0V760"/><path d="M864 0V760"/><path d="M900 0V760"/><path d="M936 0V760"/><path d="M972 0V760"/><path d="M1008 0V760"/><path d="M1044 0V760"/>
+</g>
+<!-- foundation -->
+<g stroke="#d9d4c8" fill="#7e8887" fill-opacity=".38">
+ <path d="M220 660 L690 660 L790 610 L320 610 Z"/>
+ <path d="M220 660 L220 700 L690 700 L790 650 L790 610 L690 660 Z"/>
+ <path d="M250 655v48l12 8v-48z"/><path d="M320 655v48l12 8v-48z"/><path d="M390 655v48l12 8v-48z"/><path d="M460 655v48l12 8v-48z"/><path d="M530 655v48l12 8v-48z"/><path d="M600 655v48l12 8v-48z"/><path d="M670 655v48l12 8v-48z"/><path d="M740 655v48l12 8v-48z"/>
+</g>
+<!-- tower -->
+<g stroke="#e6e2d8" stroke-width="3" fill="none">
+ <path d="M250 600 L680 600 L765 562 L335 562 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 563 L680 563 L765 525 L335 525 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 526 L680 526 L765 488 L335 488 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 489 L680 489 L765 451 L335 451 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 452 L680 452 L765 414 L335 414 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 415 L680 415 L765 377 L335 377 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 378 L680 378 L765 340 L335 340 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 341 L680 341 L765 303 L335 303 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 304 L680 304 L765 266 L335 266 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 267 L680 267 L765 229 L335 229 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 230 L680 230 L765 192 L335 192 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 193 L680 193 L765 155 L335 155 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 156 L680 156 L765 118 L335 118 Z" fill="url(#slab)" stroke-opacity=".5"/><path d="M250 119 L680 119 L765 81 L335 81 Z" fill="url(#slab)" stroke-opacity=".5"/>
+</g>
+<!-- columns -->
+<g stroke="#ddd9d0" stroke-width="7" opacity=".9">
+ <path d="M250 600 L292 94"/><path d="M330 600 L372 94"/><path d="M410 600 L452 94"/><path d="M490 600 L532 94"/><path d="M570 600 L612 94"/><path d="M650 600 L692 94"/>
+ <path d="M680 600 L722 94"/><path d="M755 600 L797 94"/>
+</g>
+<!-- beams -->
+<g stroke="#cbd5d5" stroke-width="4" opacity=".9">
+ <path d="M250 600L680 600L765 562L335 562L250 600"/><path d="M250 563L680 563L765 525L335 525L250 563"/><path d="M250 526L680 526L765 488L335 488L250 526"/><path d="M250 489L680 489L765 451L335 451L250 489"/><path d="M250 452L680 452L765 414L335 414L250 452"/><path d="M250 415L680 415L765 377L335 377L250 415"/><path d="M250 378L680 378L765 340L335 340L250 378"/><path d="M250 341L680 341L765 303L335 303L250 341"/><path d="M250 304L680 304L765 266L335 266L250 304"/><path d="M250 267L680 267L765 229L335 229L250 267"/><path d="M250 230L680 230L765 192L335 192L250 230"/><path d="M250 193L680 193L765 155L335 155L250 193"/><path d="M250 156L680 156L765 118L335 118L250 156"/><path d="M250 119L680 119L765 81L335 81L250 119"/>
+</g>
+<!-- core -->
+<path d="M465 595 L560 595 L620 565 L525 565 Z M465 595V145L525 115V565 M560 595V145L620 115V565 M465 145L560 145L620 115L525 115Z" fill="url(#core)" stroke="#e6b0a8" stroke-width="3" opacity=".92"/>
+<g stroke="#f0c2b9" stroke-width="2" opacity=".55"><path d="M465 565H560"/><path d="M465 530H560"/><path d="M465 495H560"/><path d="M465 460H560"/><path d="M465 425H560"/><path d="M465 390H560"/><path d="M465 355H560"/><path d="M465 320H560"/><path d="M465 285H560"/><path d="M465 250H560"/><path d="M465 215H560"/><path d="M465 180H560"/><path d="M465 145H560"/></g>
+<!-- roof -->
+<path d="M250 94L680 94L765 56L335 56Z" fill="#d2d8d6" fill-opacity=".18" stroke="#eeebe2" stroke-width="4"/>
+<!-- bracing -->
+<g stroke="#dcb968" stroke-width="3" opacity=".75" filter="url(#glow)">
+ <path d="M250 600L680 94M680 600L250 94M330 600L755 94M755 600L330 94"/>
+</g>
+<!-- dimensions -->
+<g stroke="#aebcbe" stroke-width="1.5" stroke-dasharray="7 7" fill="none" opacity=".55">
+ <path d="M175 600V92M160 600H190M160 92H190"/>
+ <path d="M210 720H800M210 710V730M800 710V730"/>
+</g>
+<g fill="#eeebe2" font-family="monospace" font-size="15" letter-spacing="2">
+ <text x="105" y="350" transform="rotate(-90 105 350)">G+27 / STRUCTURAL HEIGHT</text>
+ <text x="460" y="744">STRUCTURAL GRID / SCHEMATIC MODEL</text>
+ <text x="730" y="78">ROOF</text><text x="720" y="610">FOUNDATION</text>
+</g>
+<g fill="#dcb968" font-family="monospace" font-size="14"><text x="475" y="360">RC CORE / LATERAL SYSTEM</text></g>
+</svg>
