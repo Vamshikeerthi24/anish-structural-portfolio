@@ -61,6 +61,7 @@ function App() {
   const [milestone, setMilestone] = useState(2);
   const [viewerMode, setViewerMode] = useState("frame");
   const [viewerLevel, setViewerLevel] = useState(27);
+  const [selectedMember, setSelectedMember] = useState("column");
   const [menuOpen, setMenuOpen] = useState(false);
   const nav = [["Work", "#work"], ["Expertise", "#expertise"], ["Experience", "#experience"], ["Research", "#research"], ["About", "#about"]];
 
@@ -170,6 +171,29 @@ function App() {
             <div className="viewer-control"><label>LEVEL</label><input type="range" min="1" max="27" value={viewerLevel} onChange={e=>setViewerLevel(Number(e.target.value))}/><div className="level-readout"><strong>LEVEL {String(viewerLevel).padStart(2,"0")}</strong><span>27 FLOORS</span></div></div>
             <div className="viewer-legend"><div><i className="legend-frame"/>PRIMARY FRAME</div><div><i className="legend-core"/>STRUCTURAL CORE</div><div><i className="legend-slab"/>FLOOR PLATE</div></div>
             <div className="viewer-note">WEB VIEWER / PLACEHOLDER GEOMETRY<br/>READY FOR VERIFIED PROJECT DATA</div>
+          </div>
+        </div>
+      </section>
+      <section className="inspector-section">
+        <div className="section-head"><div><p className="section-kicker">11 / MEMBER INSPECTOR</p><h2>Select a <span>structural element.</span></h2></div><p className="section-intro">A portfolio-grade inspection layer for explaining structural members. Select an element to see its role, typical inputs and where it sits in the load path.</p></div>
+        <div className="inspector-shell">
+          <div className="inspector-model">
+            <div className="inspector-grid" />
+            <div className="inspect-tower">
+              <button className={selectedMember==="column"?"member column selected":"member column"} onClick={()=>setSelectedMember("column")} aria-label="Inspect column"><span /></button>
+              <button className={selectedMember==="beam"?"member beam selected":"member beam"} onClick={()=>setSelectedMember("beam")} aria-label="Inspect beam"><span /></button>
+              <button className={selectedMember==="core"?"member core selected":"member core"} onClick={()=>setSelectedMember("core")} aria-label="Inspect core"><span /></button>
+              <button className={selectedMember==="slab"?"member slab selected":"member slab"} onClick={()=>setSelectedMember("slab")} aria-label="Inspect floor slab"><span /></button>
+            </div>
+            <div className="inspect-callout">CLICK A MEMBER<br/><span>INTERACTIVE SCHEMATIC</span></div>
+          </div>
+          <div className="inspector-info">
+            <div className="inspector-top"><span>ELEMENT / {selectedMember.toUpperCase()}</span><b>INSPECT</b></div>
+            {selectedMember==="column" && <><h3>Primary <em>column.</em></h3><p>Vertical load-bearing element transferring gravity actions from beams and floor systems toward the foundation.</p><div className="inspector-facts"><div><span>ROLE</span><b>GRAVITY SUPPORT</b></div><div><span>PATH</span><b>FLOOR → COLUMN → FOUNDATION</b></div><div><span>DESIGN</span><b>RC / STEEL MEMBER CHECKS</b></div></div></>}
+            {selectedMember==="beam" && <><h3>Floor <em>beam.</em></h3><p>Horizontal framing member supporting floor actions and distributing them into the primary vertical system.</p><div className="inspector-facts"><div><span>ROLE</span><b>FLOOR FRAMING</b></div><div><span>PATH</span><b>SLAB → BEAM → COLUMN / CORE</b></div><div><span>DESIGN</span><b>MEMBER + DEFLECTION CHECKS</b></div></div></>}
+            {selectedMember==="core" && <><h3>Structural <em>core.</em></h3><p>Central vertical system represented here as the building's principal lateral-resisting and circulation core.</p><div className="inspector-facts"><div><span>ROLE</span><b>LATERAL SYSTEM</b></div><div><span>PATH</span><b>LATERAL ACTION → CORE → FOUNDATION</b></div><div><span>STUDY</span><b>SEISMIC RESPONSE</b></div></div></>}
+            {selectedMember==="slab" && <><h3>Floor <em>plate.</em></h3><p>Horizontal floor system that collects gravity actions and transfers them into the supporting framing.</p><div className="inspector-facts"><div><span>ROLE</span><b>LOAD DISTRIBUTION</b></div><div><span>PATH</span><b>SLAB → BEAM / FRAME</b></div><div><span>DESIGN</span><b>THICKNESS + REINFORCEMENT</b></div></div></>}
+            <div className="inspector-disclaimer">SCHEMATIC PORTFOLIO VIEW / NOT A FABRICATION OR CONSTRUCTION DRAWING</div>
           </div>
         </div>
       </section>
