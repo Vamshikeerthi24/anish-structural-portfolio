@@ -1,0 +1,33 @@
+/* Version 3 visual layer — premium structural studio treatment */
+:root{--v3-grid:rgba(17,26,31,.08)}
+body{background:#eeebe2}
+.nav{backdrop-filter:blur(14px);background:rgba(17,26,31,.18)}
+.hero{background:radial-gradient(circle at 72% 45%,rgba(70,111,128,.22),transparent 25%),linear-gradient(115deg,#10191d,#18252a 65%,#111a1f)}
+.hero-art:after{content:"";position:absolute;inset:8% 2% 7% 7%;border:1px solid rgba(164,190,195,.16);pointer-events:none}
+.hero-copy{max-width:820px}
+.hero h1{font-weight:600;text-wrap:balance}
+.hero-text{font-size:16px}
+.hero-building{filter:drop-shadow(0 25px 35px rgba(0,0,0,.25))}
+.hero-floor:nth-child(3n){opacity:.65}
+.hero-floor:nth-child(4n) span{background:rgba(208,139,94,.5)}
+.statement{position:relative}
+.statement:after{content:"A—A";position:absolute;right:8vw;top:110px;font:9px "Space Grotesk";letter-spacing:.18em;color:#87918f}
+.project-section{background:#dedbd2}
+.project-panel{box-shadow:0 25px 80px rgba(17,26,31,.12)}
+.project-visual:before{content:"ELEVATION / EAST";position:absolute;right:25px;top:48%;writing-mode:vertical-rl;font:8px "Space Grotesk";letter-spacing:.16em;color:#52676c;z-index:3}
+.project-info h3{font-weight:600}
+.switcher button{transition:all .25s ease}
+.switcher button:hover{color:#d9dfdc;background:#27343a}
+.skill-card{overflow:hidden}
+.skill-card:before{content:"STRUCTURAL / 0" attr(data-index);position:absolute;right:-15px;top:70px;font:48px "Space Grotesk";font-weight:600;color:rgba(17,26,31,.035)}
+.skill-card:hover{box-shadow:0 18px 45px rgba(17,26,31,.08)}
+.experience{background:linear-gradient(135deg,#d9d6cd,#e8e4db)}
+.timeline-content h3{font-weight:600}
+.bim-card{box-shadow:0 25px 70px rgba(17,26,31,.12)}
+.research{background:#eeeae1}
+.publication{transition:padding .25s ease,background .25s ease}
+.publication:hover{padding-left:18px;padding-right:18px;background:#e5e1d8}
+.about{background:linear-gradient(135deg,#121c20,#1c292e)}
+.contact{background:linear-gradient(120deg,#b66d43,#c47a4b)}
+footer{border-top:1px solid rgba(255,255,255,.08)}
+@media(max-width:650px){.statement:after{top:65px;right:6vw}.project-visual:before{display:none}.publication:hover{padding-left:0;padding-right:0}}
