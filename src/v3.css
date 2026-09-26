@@ -183,9 +183,11 @@ footer{border-top:1px solid rgba(255,255,255,.08)}
 .hero-profile img{width:78px;height:92px;object-fit:cover;object-position:center 18%;border:1px solid rgba(17,26,31,.18);border-radius:8px;filter:none;box-shadow:0 16px 34px rgba(17,26,31,.18)}
 .hero-profile strong{display:block;font:700 .72rem monospace;letter-spacing:.12em}
 .hero-profile span{display:block;margin-top:.4rem;font:600 .56rem monospace;letter-spacing:.09em;opacity:.48}
+.about{grid-template-columns:90px minmax(220px,300px) minmax(280px,1fr) minmax(280px,1fr)}
 .about-profile-large{grid-column:2;align-self:start}
-.about-profile-large img{display:block;width:min(100%,300px);aspect-ratio:4/5;object-fit:cover;object-position:center 18%;border:1px solid rgba(238,235,226,.18);filter:none;border-radius:6px;box-shadow:0 28px 60px rgba(0,0,0,.22)}
+.about-profile-large img{display:block;width:100%;max-width:300px;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;border:1px solid rgba(238,235,226,.18);filter:none;border-radius:6px;box-shadow:0 28px 60px rgba(0,0,0,.22)}
 .about-profile-large + div{grid-column:3}
+.about-copy{grid-column:4;align-self:start}
 @media(max-width:850px){.about-profile-large{grid-column:1}.about-profile-large + div{grid-column:2}}
 @media(max-width:600px){.hero-profile{margin-top:1.2rem}.hero-profile img{width:54px;height:68px}.about-profile-large{grid-column:1}.about-profile-large + div{grid-column:1}}
 /* The shared visual is intentionally used as the main explorer reference; controls remain portfolio-interaction controls. */
