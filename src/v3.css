@@ -109,3 +109,10 @@ footer{border-top:1px solid rgba(255,255,255,.08)}
 .inspector-disclaimer{margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(238,235,226,.1);font:600 .52rem/1.6 monospace;letter-spacing:.08em;opacity:.28}
 @media(max-width:850px){.inspector-shell{grid-template-columns:1fr}.inspector-info{border-left:0;border-top:1px solid rgba(238,235,226,.14)}}
 @media(max-width:520px){.inspector-model{min-height:440px}.inspect-tower{left:18%;right:18%}.member.column:after{right:-210px}.inspector-info{padding:1.5rem}.inspector-info h3{margin-top:2rem}.inspector-facts div{grid-template-columns:75px 1fr}}
+
+/* V13 3D viewer interaction */
+.viewer-building{will-change:transform}
+.viewer-floor.isolated{opacity:1!important;background:rgba(220,185,108,.12);box-shadow:0 0 28px rgba(220,185,108,.12);border-color:rgba(220,185,108,.75);transform:scale(1.035)}
+.viewer-action{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.viewer-action button{width:100%;padding:.75rem;background:transparent;color:#eeebe2;border:1px solid rgba(238,235,226,.25);font:600 .58rem monospace;letter-spacing:.08em;cursor:pointer}
+.viewer-action button:hover{background:#eeebe2;color:#111a1f}
