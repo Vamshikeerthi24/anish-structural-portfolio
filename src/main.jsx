@@ -64,8 +64,16 @@ function App() {
   const [selectedMember, setSelectedMember] = useState("column");
   const [viewerRotate, setViewerRotate] = useState(-22);
   const [viewerFloorOnly, setViewerFloorOnly] = useState(false);
+  const [displayOptions, setDisplayOptions] = useState({ columns: true, beams: true, slabs: true, core: true, foundation: true });
   const [menuOpen, setMenuOpen] = useState(false);
   const nav = [["Work", "#work"], ["Expertise", "#expertise"], ["Experience", "#experience"], ["Research", "#research"], ["About", "#about"]];
+  const memberInfo = {
+    column: { title: "Column C-12", type: "RC Column", level: "Ground — Level 27", grid: "C / 3", role: "Gravity + lateral resistance", path: "Slab → Beam → Column → Foundation" },
+    beam: { title: "Beam B-08", type: "RC Beam", level: "Typical floor", grid: "C — D / 3", role: "Gravity load transfer", path: "Slab → Beam → Column" },
+    slab: { title: "Floor Slab S-15", type: "RC Floor System", level: "Typical floor", grid: "A — D / 1 — 4", role: "Floor load distribution", path: "Slab → Beam → Column / Core" },
+    core: { title: "Core / Shear Wall", type: "RC Core", level: "Ground — Roof", grid: "Central core", role: "Lateral + seismic resistance", path: "Lateral actions → Core → Foundation" }
+  };
+  const activeMember = memberInfo[selectedMember];
 
   return <div className="site"><div className="grain" />
     <header className="nav"><a href="#" className="brand" onClick={() => setMenuOpen(false)}><span className="brand-mark">DA</span><span>DEVIREDDY ANISH</span></a>
@@ -153,30 +161,32 @@ function App() {
           </div>
         </div>
         <div className="profile-tags">{["STRUCTURAL ANALYSIS","RC DESIGN","STEEL DESIGN","BIM","DRAFTING","SITE COORDINATION","SEISMIC STUDIES","RESEARCH"].map(x=><span key={x}>{x}</span>)}</div>
-      </section><section className="viewer-section">
-        <div className="section-head"><div><p className="section-kicker">10 / 3D STRUCTURAL VIEWER</p><h2>See the structure<br/><span>in three dimensions.</span></h2></div><p className="section-intro">A lightweight web viewer framework for structural geometry. The current model is schematic; verified project geometry can be inserted later from drawings or BIM data.</p></div>
-        <div className="viewer-shell">
-          <div className={"viewer-stage mode-"+viewerMode}>
-            <div className="viewer-grid" />
-            <img className="viewer-reference-model" src={`${import.meta.env.BASE_URL}structural-model.svg`} alt="Schematic G+27 structural model with frame, slabs, core and foundation" />
-            <div className="viewer-building" style={{transform:`rotateY(${viewerRotate}deg) rotateX(3deg) skewY(-1deg)`}}>
-              {Array.from({length:10}).map((_,i)=><div key={i} className={"viewer-floor "+(viewerLevel>=((i+1)*3)?"visible":"ghost")+" "+(viewerFloorOnly && viewerLevel>=((i+1)*3) && viewerLevel<((i+1)*3)+3?"isolated":"")}><i/><i/><i/><i/><b/></div>)}
-              <div className="viewer-core"/>
-              <div className="viewer-foundation"/>
-              <div className="viewer-roof"/>
-            </div>
-            <div className="viewer-axis">Z / LEVEL {viewerLevel}</div>
-            <div className="viewer-label">G+27 / SCHEMATIC MODEL</div>
+      </section><section className="viewer-section visual-explorer">
+        <div className="explorer-titlebar"><div><p className="section-kicker">10 / 3D STRUCTURAL EXPLORER</p><h2>3D Structural Explorer</h2><p>Interactive building model to understand the structural system, load paths and key members.</p></div><div className="explorer-disclaimer">This is a schematic 3D model created for portfolio demonstration.<br/>It represents a high-rise structure (G+27) based on research and engineering experience.</div></div>
+        <div className="explorer-layout">
+          <aside className="explorer-sidebar">
+            <div className="explorer-group"><h4>View Mode</h4>{[["frame","Full Building"],["frame","Structural Frame"],["core","Core Only"],["floor","Floor Plate"]].map(([k,t],idx)=><button key={t} className={(idx===0&&viewerMode==="frame")||(idx>0&&viewerMode===k)?"active":""} onClick={()=>setViewerMode(k)}><span>{idx===0?"▥":idx===1?"▦":idx===2?"▯":"▱"}</span>{t}</button>)}</div>
+            <div className="explorer-group"><h4>Level Control</h4><div className="explorer-level-readout">Level: {viewerLevel} / 27</div><input type="range" min="1" max="27" value={viewerLevel} onChange={e=>setViewerLevel(Number(e.target.value))}/><label className="explorer-toggle"><input type="checkbox" checked={viewerFloorOnly} onChange={e=>setViewerFloorOnly(e.target.checked)}/><span/>Isolate This Level</label></div>
+            <div className="explorer-group"><h4>Display Options</h4>{Object.entries(displayOptions).map(([key,on])=><label className="explorer-check" key={key}><input type="checkbox" checked={on} onChange={()=>setDisplayOptions(v=>({...v,[key]:!v[key]}))}/><span>✓</span>{key==="core"?"Core / Shear Wall":key.charAt(0).toUpperCase()+key.slice(1)}</label>)}</div>
+            <div className="explorer-group"><h4>View Angle</h4><input type="range" min="-55" max="55" value={viewerRotate} onChange={e=>setViewerRotate(Number(e.target.value))}/></div>
+          </aside>
+          <div className="explorer-model">
+            <div className="explorer-levels"><span>Roof</span><span>Level 27</span><span>Level 20</span><span>Level 15</span><span>Level 10</span><span>Level 5</span><span>Ground</span><span>Foundation</span></div>
+            <div className="explorer-reference" style={{transform:`rotateY(${viewerRotate}deg)`}}><img src={`${import.meta.env.BASE_URL}structural-model.svg`} alt="Schematic G+27 structural model" /></div>
+            <div className="explorer-grid-labels"><span>A</span><span>B</span><span>C</span><span>D</span><span>1</span><span>2</span><span>3</span><span>4</span></div>
           </div>
-          <div className="viewer-panel">
-            <div className="viewer-panel-head"><span>MODEL CONTROLS</span><b>LIVE</b></div>
-            <div className="viewer-control"><label>VIEW</label><div className="viewer-buttons">{[["frame","FRAME"],["core","CORE"],["floor","FLOOR"]].map(([k,t])=><button className={viewerMode===k?"active":""} onClick={()=>setViewerMode(k)} key={k}>{t}</button>)}</div></div>
-            <div className="viewer-control"><label>LEVEL</label><input type="range" min="1" max="27" value={viewerLevel} onChange={e=>setViewerLevel(Number(e.target.value))}/><div className="level-readout"><strong>LEVEL {String(viewerLevel).padStart(2,"0")}</strong><span>27 FLOORS</span></div></div>
-            <div className="viewer-control"><label>ROTATION</label><input type="range" min="-55" max="55" value={viewerRotate} onChange={e=>setViewerRotate(Number(e.target.value))}/><div className="level-readout"><strong>{viewerRotate}°</strong><span>ORBIT VIEW</span></div></div>
-            <div className="viewer-control viewer-action"><button onClick={()=>setViewerFloorOnly(v=>!v)}>{viewerFloorOnly?"SHOW FULL MODEL":"ISOLATE LEVEL"}</button></div>
-            <div className="viewer-legend"><div><i className="legend-frame"/>PRIMARY FRAME</div><div><i className="legend-core"/>STRUCTURAL CORE</div><div><i className="legend-slab"/>FLOOR PLATE</div></div>
-            <div className="viewer-note">WEB VIEWER / PLACEHOLDER GEOMETRY<br/>READY FOR VERIFIED PROJECT DATA</div>
-          </div>
+          <aside className="explorer-info">
+            <h3>Structural Member Information</h3>
+            <div className="member-tabs">{[["column","▥","Column"],["beam","▱","Beam"],["slab","▱","Slab"],["core","▯","Core"]].map(([k,icon,label])=><button key={k} className={selectedMember===k?"active":""} onClick={()=>setSelectedMember(k)}><b>{icon}</b>{label}</button>)}</div>
+            <div className="member-detail"><h4>{activeMember.title}</h4><div className="detail-row"><span>Element Type</span><b>{activeMember.type}</b></div><div className="detail-row"><span>Level</span><b>{activeMember.level}</b></div><div className="detail-row"><span>Grid</span><b>{activeMember.grid}</b></div><div className="detail-row"><span>Role</span><b>{activeMember.role}</b></div><div className="detail-row"><span>Load Path</span><b>{activeMember.path}</b></div><div className="detail-row"><span>Status</span><b>Schematic (Portfolio)</b></div></div>
+            <div className="explorer-info-note">Member dimensions, reinforcement and material grades are intentionally not presented as project facts unless supported by verified drawings or source calculations.</div>
+          </aside>
+        </div>
+        <div className="explorer-cards">
+          <article><div className="mini-structure frame-mini"><span/><span/><span/><span/></div><div><h4>Structural Frame</h4><p>RC frame system with columns, beams and slabs designed for gravity and lateral loads.</p></div></article>
+          <article><div className="mini-structure core-mini"><i/><i/><i/></div><div><h4>Core / Shear Wall</h4><p>Central RC core representing the principal lateral and seismic resistance system.</p></div></article>
+          <article><div className="mini-structure slab-mini"><span/><span/><span/></div><div><h4>Floor Plate</h4><p>Typical floor slab and beam framing represented as a connected floor system.</p></div></article>
+          <article><div className="mini-structure foundation-mini"><b/><b/><b/></div><div><h4>Foundation</h4><p>Foundation zone shown schematically to complete the structural load path.</p></div></article>
         </div>
       </section>
       <section className="research-dossier">
