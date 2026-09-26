@@ -7,6 +7,7 @@ import {
   ScanLine, BookOpen, Linkedin
 } from "lucide-react";
 import "./styles.css";
+import "./v3.css";
 
 const skills = [
   { title: "Structural Analysis", text: "Analysis and design verification using STAAD.Pro and ETABS.", icon: Ruler },
