@@ -30,7 +30,24 @@ function Reveal({ children, delay = 0, className = "" }) {
 
 function BlueprintBuilding({ system }) {
   const steel = system === "steel", composite = system === "composite";
-  return <div className={`building ${system}`}><div className="building-glow" /><div className="building-crown"><span>G+27</span></div><div className="tower">{Array.from({ length: 14 }).map((_, i) => <div className="floor" key={i}><span /><span /><span /><span /><i /><i /></div>)}</div><div className="foundation"><b /><b /><b /></div><div className="system-label">{steel ? "STEEL FRAME" : composite ? "COMPOSITE SYSTEM" : "RC FRAME"}</div></div>;
+  const floors = Array.from({ length: 14 });
+  return <div className={`building ${system}`}>
+    <div className="building-glow" />
+    <div className="structural-axis axis-x">GRID A — D</div>
+    <div className="structural-axis axis-y">1 — 27</div>
+    <div className="building-crown"><span>G+27</span><small>STRUCTURAL MODEL</small></div>
+    <div className="tower">
+      {floors.map((_, i) => <div className="floor" key={i}>
+        <span className="column c1" /><span className="column c2" /><span className="column c3" /><span className="column c4" />
+        <div className="core" /><div className="slab" />
+        {steel && <><i className="brace b1" /><i className="brace b2" /></>}
+        {composite && <><i className="composite-ring" /><i className="composite-ring ring2" /></>}
+        <em>LEVEL {String((i * 2) + 1).padStart(2,"0")}</em>
+      </div>)}
+    </div>
+    <div className="foundation"><b /><b /><b /><span>FOUNDATION / LOAD PATH</span></div>
+    <div className="system-label">{steel ? "STEEL FRAME + BRACING" : composite ? "COMPOSITE FRAME + CORE" : "REINFORCED CONCRETE FRAME + CORE"}</div>
+  </div>;
 }
 
 function App() {
